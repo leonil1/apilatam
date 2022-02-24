@@ -1,10 +1,13 @@
-version: '3'
+version: '3.9'
 
 services:
   db:
-    image: postgres
+    image: postgres:13
+    env_file: .env
+    volumes:
+    - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=dblatam
+      - POSTGRES_NAME=dblatam
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
   web:
@@ -14,5 +17,9 @@ services:
       -  .:/code
     ports:
       - "8000:8000"
+    environment:
+      - POSTGRES_NAME=dblatam
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     depends_on:
       - db

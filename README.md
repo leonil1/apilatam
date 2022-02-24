@@ -46,4 +46,6 @@ Puedes crear un pull request al proyecto
 
 ## Licencia
 
+## :c palta algunas configuracion  .env configuracion de setting tanto para produccion y dev d
+
 MIT
