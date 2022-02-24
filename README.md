@@ -16,6 +16,27 @@ Clone el repositorio
 Puedes iniciar el imagen 
 
 `$ docker-compose up --build -d`
+`$ docker-compose up`
+## pruebas en postman
+### signup user (post)
+` http://127.0.0.1:8000/users/signup/`
+### login user (post)
+` http://127.0.0.1:8000/users/login/`
+### verify user (post)
+` http://127.0.0.1:8000/users/verify/`
+### verify user_profile (put, patch) de profile
+` http://127.0.0.1:8000/users/id/profile/`
+### login user (post)
+` http://127.0.0.1:8000/users/2/`
+### login user (get)
+` http://127.0.0.1:8000/users/`
+### login product (get)
+` http://127.0.0.1:8000/products/`
+### login product (put)
+` http://127.0.0.1:8000/products/2/`
+### login product (destroy)
+` http://127.0.0.1:8000/products/2/`
+
 
 ## peticiones de api 
 get, post, put patch, delete

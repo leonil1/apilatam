@@ -8,6 +8,7 @@ from apps.users.serializers import (UserLoginSerializer, UserModelSerializer, Us
                                     AccountVerificationSerializer, ProfileModelSerializer)
 
 
+
 class UserViewSet(mixins.RetrieveModelMixin,
                   viewsets.GenericViewSet):
 
@@ -42,7 +43,7 @@ class UserViewSet(mixins.RetrieveModelMixin,
         return Response(data, status=status.HTTP_200_OK)
 
     @action(detail=True, methods=['put', 'patch'])
-    def profile(self, request):
+    def profile(self, request, *args, **kwargs):
         """update from profile"""
         user = self.get_object()
         profile = user.profile

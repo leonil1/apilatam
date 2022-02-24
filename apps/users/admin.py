@@ -11,9 +11,9 @@ class CustomUserAdmin(UserAdmin):
 
 
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'reputation', 'store_token', 'biography')
+    list_display = ('user', 'sex', 'biography')
     search_fields = ('user__username', 'user__email', 'user__first_name', 'user__last_name')
-    list_filter = ('reputation', )
+    list_filter = ('sex', )
 
 
 admin.site.register(Profile, ProfileAdmin)

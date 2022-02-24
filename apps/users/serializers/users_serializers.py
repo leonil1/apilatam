@@ -8,7 +8,7 @@ from django.core.validators import RegexValidator
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from apps.users.models import User, Profile
-from apps.users.serializers import ProfileModelSerializer
+from apps.users.serializers.profile_serializers import ProfileModelSerializer
 from django.utils import timezone
 
 import jwt
@@ -21,7 +21,7 @@ class UserModelSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'phone')
+        fields = ('username', 'first_name', 'last_name', 'phone', 'profile')
 
 
 class UserLoginSerializer(serializers.Serializer):
