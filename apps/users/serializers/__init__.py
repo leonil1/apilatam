@@ -1,1 +1,2 @@
 from .users_serializers import UserSignupSerializer, UserLoginSerializer, AccountVerificationSerializer, UserModelSerializer
+from .profile_serializers import ProfileModelSerializer

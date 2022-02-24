@@ -4,8 +4,8 @@ from rest_framework import status, viewsets, mixins
 
 from apps.users.models import User
 
-from apps.users.serializers import(
-    UserLoginSerializer, UserModelSerializer, UserSignupSerializer, AccountVerificationSerializer)
+from apps.users.serializers import (UserLoginSerializer, UserModelSerializer, UserSignupSerializer,
+                                    AccountVerificationSerializer, ProfileModelSerializer)
 
 
 class UserViewSet(mixins.RetrieveModelMixin,
@@ -40,6 +40,22 @@ class UserViewSet(mixins.RetrieveModelMixin,
         serializer.save()
         data = {'message': 'Congratulations, now go store'}
         return Response(data, status=status.HTTP_200_OK)
+
+    @action(detail=True, methods=['put', 'patch'])
+    def profile(self, request):
+        """update from profile"""
+        user = self.get_object()
+        profile = user.profile
+        partial = request.method == 'PATCH'
+        serializer = ProfileModelSerializer(
+            profile,
+            data=request.data,
+            partial=partial
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        data = UserModelSerializer(user).data
+        return Response(data)
 
     @action(detail=False, methods=['get'])
     def list_users(self, request):

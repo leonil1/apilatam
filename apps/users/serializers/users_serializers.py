@@ -8,6 +8,7 @@ from django.core.validators import RegexValidator
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from apps.users.models import User, Profile
+from apps.users.serializers import ProfileModelSerializer
 from django.utils import timezone
 
 import jwt
@@ -15,6 +16,9 @@ from datetime import timedelta
 
 
 class UserModelSerializer(serializers.ModelSerializer):
+
+    profile = ProfileModelSerializer(read_only=True)
+
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'phone')
